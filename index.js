@@ -30,6 +30,10 @@ app.use(cors()); // Add cors middleware
 
 const server = http.createServer(app); // Add this
 
+app.get('/*', (request, response) => {
+    response.sendFile(path.join(__dirname, '../server/public/index.html'));
+})
+
 app.post('/register', (req,res) => {
     const user = new UserModel({
         username: req.body.username,
